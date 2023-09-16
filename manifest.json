@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Blind Filter",
-  "description": "Filter posts on Blind",
+  "description": "Filter posts on Blind (teamblind.com)",
   "version": "0.1",
   "icons": {
     "16": "images/icon-16.png",

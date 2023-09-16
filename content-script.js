@@ -12,6 +12,10 @@ function doWork(node) {
         return
     }
 
+    if (location.href.endsWith('user/history')) {
+        return
+    }
+
     let a = node.getElementsByClassName('h_tit')
     for (let b of a) {
         for (let c of blocklist) {

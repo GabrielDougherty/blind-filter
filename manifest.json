@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Blind Filter",
-  "description": "Enable focus mode on Chrome's official Extensions and Chrome Web Store documentation.",
-  "version": "1.0",
+  "description": "Filter posts on Blind",
+  "version": "0.1",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -15,11 +15,19 @@
       "32": "images/icon-32.png",
       "48": "images/icon-48.png",
       "128": "images/icon-128.png"
-    }
+    },
+    "default_tooltip": "Blind Filter",
+    "default_popup": "filter-editor.html"
   },
   "background": {
     "service_worker": "background.js"
   },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.teamblind.com/*"
+  ],
   "content_scripts": [
     {
       "matches": [
@@ -32,7 +40,7 @@
       "match_origin_as_fallback": false,
       "match_about_blank": false,
       "run_at": "document_idle",
-      "world": "MAIN"
+      "world": "ISOLATED"
     }
   ]
 }

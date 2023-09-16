@@ -1,5 +1,11 @@
-blocklist = [
-]
+"use strict";
+
+var blocklist = []
+
+chrome.storage.local.get('blindFilterText', (result) => {
+    console.log('Value currently is ' + result.blindFilterText);
+    blocklist = result.blindFilterText?.split('\n') || []
+});
 
 function doWork(node) {
     if (typeof node.getElementsByClassName !== 'function') {
@@ -33,4 +39,10 @@ observer.observe(document.documentElement, {
     childList: true,
     characterData: true,
     attribute: true
+});
+
+chrome.runtime.onMessage.addListener(async text => {
+    console.log("received " + text)
+    blocklist = text.split('\n')
+    console.log("blocklist: ", blocklist)
 });

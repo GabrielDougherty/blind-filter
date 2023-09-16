@@ -4,7 +4,7 @@ var blocklist = []
 
 chrome.storage.local.get('blindFilterText', (result) => {
     console.log('Value currently is ' + result.blindFilterText);
-    blocklist = result.blindFilterText?.split('\n') || []
+    blocklist = result.blindFilterText?.split('\n').filter((a) => a.length > 0) || []
 });
 
 function doWork(node) {
@@ -43,6 +43,6 @@ observer.observe(document.documentElement, {
 
 chrome.runtime.onMessage.addListener(async text => {
     console.log("received " + text)
-    blocklist = text.split('\n')
+    blocklist = text.split('\n').filter((a) => a.length > 0)
     console.log("blocklist: ", blocklist)
 });

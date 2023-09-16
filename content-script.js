@@ -1,5 +1,8 @@
 "use strict";
 
+// uncomment to debug
+console.log = function() {}
+
 var blocklist = []
 
 chrome.storage.local.get('blindFilterText', (result) => {

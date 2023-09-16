@@ -1,5 +1,8 @@
 "use strict";
 
+// uncomment to debug
+console.log = function() {}
+
 async function sendMessageToBlindTabs(text) {
     const tabs = await chrome.tabs.query({ 'url': "*://*.teamblind.com/*" });
 

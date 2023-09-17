@@ -1,5 +1,7 @@
 # Blind Filter
 
+![Blind Filter logo](images/icon-128.png)
+
 Chrome extension to filter posts on teamblind.com
 
 # Build

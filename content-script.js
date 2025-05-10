@@ -1,6 +1,6 @@
 "use strict";
 
-// uncomment to debug
+// comment to debug
 console.log = function() {}
 
 var blocklist = []
@@ -19,12 +19,12 @@ function doWork(node) {
         return
     }
 
-    let a = node.getElementsByClassName('h_tit')
+    let a = node.getElementsByTagName('article')
     for (let b of a) {
         for (let c of blocklist) {
             if (b.innerHTML.toLowerCase().includes(c)) {
                 console.log('blocking element that has ' + c)
-                b.parentElement.parentElement.parentElement.remove()
+                b.remove()
                 break
             }
         }

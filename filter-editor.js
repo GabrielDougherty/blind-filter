@@ -39,7 +39,7 @@ function fetchContentMessages(tabId) {
     );
 }
 function displayMessages(response) {
-    const container = document.getElementById('button2');
+    const container = document.getElementById('blocked-label');
 
     if (response && response.data) {
         // Clear container

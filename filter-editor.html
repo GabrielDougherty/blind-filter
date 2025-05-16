@@ -1,19 +1,38 @@
-<html style="min-width:300px; min-height:200px" class="min-w-96 min-h-96">
-
+<!DOCTYPE html>
+<html>
 <head>
     <link rel="stylesheet" type="text/css" href="output.css" />
+    <style>
+        body {
+            min-width: 300px;
+            min-height: 200px;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
+<body>
+    <div class="p-2 w-full">
+        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Text to filter. Separate by new lines. Case insensitive
+        </label>
+        <textarea id="message"
+            class="block resize p-1 w-full h-32 text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Text to filter. Separate by new lines. Case insensitive"></textarea>
+        <div class="flex items-center mt-2">
+            <button id="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Save
+            </button>
+            <label id="button2" class="ml-4">
+                Blocked: 0
+            </label>
+        </div>
+    </div>
 
-<div width="200" height="200" class="p-2 min-w-96 min-h-96">
-    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Text to filter. Separate
-        by new lines. Case insensitive</label>
-    <textarea id="message"
-        class="block resize p-1 w-full h-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Text to filter. Separate by new lines. Case insensitive"></textarea>
-    <button id="button" class="bg-blue-500 mt-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Save
-    </button>
-</div>
-<script src="filter-editor.js"></script>
+    <div class="p-2 w-full" id="hello">
+        <!-- Content for second div -->
+    </div>
 
+    <script src="filter-editor.js"></script>
+</body>
 </html>

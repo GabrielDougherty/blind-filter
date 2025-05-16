@@ -1,21 +1,23 @@
-// const blindUrlPrefix = 'https://www.teamblind'
+let messageStore = {};
 
-// // When the user clicks on the extension action
-// chrome.tabs.onCreated.addListener(async (tab) => {
-// if (tab.url.startsWith(blindUrlPrefix)) {
-//   // Set the action badge to the next state
-//   await chrome.action.setBadgeText({
-//     tabId: tab.id,
-//     text: 0
-//   });
-// }
-// });
-// chrome.tabs.onUpdated.addListener(async (tab) => {
-//   if (tab.url.startsWith(blindUrlPrefix)) {
-//     // Set the action badge to the next state
-//     await chrome.action.setBadgeText({
-//       tabId: tab.id,
-//       text: "HELLO"
-//     });
-//   }
-//   });
+// Listen for messages from content scripts
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    // Store message from content script with tab ID as key
+    if (sender.tab && (message.type === "BLOCK_COUNT")) {
+        const tabId = sender.tab.id;
+        messageStore[tabId] = message;
+
+        // Send acknowledgment back to content script
+        sendResponse({ status: "Message received by background script" });
+        return true; // Keep message channel open for async response
+    }
+
+    // Handle requests from popup
+    if (message.type === "GET_CONTENT_DATA") {
+        const tabId = message.tabId;
+        sendResponse({
+            data: messageStore[tabId] || null
+        });
+        return true;
+    }
+});

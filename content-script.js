@@ -4,6 +4,7 @@
 console.log = function() {}
 
 var blocklist = []
+var blockcount = 0
 
 chrome.storage.local.get('blindFilterText', (result) => {
     console.log('Value currently is ' + result.blindFilterText);
@@ -19,10 +20,17 @@ function doWork(node) {
         return
     }
 
+
+    chrome.runtime.sendMessage({ 'type': 'BLOCK_COUNT', 'data': blockcount }, _ => {
+    });
+
     let a = node.getElementsByTagName('article')
     for (let b of a) {
         for (let c of blocklist) {
             if (b.innerHTML.toLowerCase().includes(c)) {
+                blockcount++;
+                chrome.runtime.sendMessage({ 'type': 'BLOCK_COUNT', 'data': blockcount }, _ => {
+                });
                 console.log('blocking element that has ' + c)
                 b.remove()
                 break
